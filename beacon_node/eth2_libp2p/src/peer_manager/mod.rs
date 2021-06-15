@@ -582,14 +582,7 @@ impl<TSpec: EthSpec> PeerManager<TSpec> {
             // ENR's may have multiple Multiaddrs. The multi-addr associated with the UDP
             // port is removed, which is assumed to be associated with the discv5 protocol (and
             // therefore irrelevant for other libp2p components).
-            let mut out_list = enr.multiaddr();
-            out_list.retain(|addr| {
-                addr.iter()
-                    .find(|v| matches!(v, MProtocol::Udp(_)))
-                    .is_none()
-            });
-
-            out_list
+            enr.multiaddr_tcp()
         } else {
             // PeerId is not known
             Vec::new()
@@ -680,6 +673,8 @@ impl<TSpec: EthSpec> PeerManager<TSpec> {
             .collect();
         for peer_id in &peers_to_dial {
             debug!(self.log, "Dialing cached ENR peer"; "peer_id" => %peer_id);
+            // Remove the ENR from the cache to prevent continual re-dialing on disconnects
+            self.discovery.remove_cached_enr(&peer_id);
             self.dial_peer(peer_id);
         }
     }

@@ -33,7 +33,7 @@ dependencies = [
  "slog-term",
  "slot_clock",
  "tempfile",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "types",
  "validator_dir",
 ]
@@ -90,13 +90,14 @@ dependencies = [
 
 [[package]]
 name = "aes"
-version = "0.7.3"
+version = "0.7.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b2333ac5777aaa1beb8589f5374976ae7dc8aa4f09fd21ae3d8662ca97f5247d"
+checksum = "495ee669413bfbe9e8cace80f4d3d78e6d8c8d99579f97fb93bde351b185f2d4"
 dependencies = [
  "cfg-if 1.0.0",
  "cipher 0.3.0",
  "cpufeatures",
+ "ctr 0.7.0",
  "opaque-debug 0.3.0",
 ]
 
@@ -114,9 +115,9 @@ dependencies = [
 
 [[package]]
 name = "aes-gcm"
-version = "0.9.1"
+version = "0.9.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1ee2263805ba4537ccbb19db28525a7b1ebc7284c228eb5634c3124ca63eb03f"
+checksum = "bc3be92e19a7ef47457b8e6f90707e12b6ac5d20c6f3866584fa3be0787d839f"
 dependencies = [
  "aead",
  "aes",
@@ -564,7 +565,7 @@ dependencies = [
  "serde_yaml",
  "slasher",
  "slog",
- "sloggers",
+ "sloggers 1.0.1",
  "slot_clock",
  "smallvec",
  "state_processing",
@@ -572,7 +573,7 @@ dependencies = [
  "strum",
  "task_executor",
  "tempfile",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tree_hash",
  "types",
 ]
@@ -611,7 +612,7 @@ dependencies = [
  "slog-term",
  "store",
  "task_executor",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "types",
 ]
 
@@ -801,8 +802,8 @@ dependencies = [
  "slog-scope",
  "slog-stdlog",
  "slog-term",
- "sloggers",
- "tokio 1.6.0",
+ "sloggers 1.0.1",
+ "tokio 1.6.1",
  "types",
 ]
 
@@ -836,9 +837,9 @@ dependencies = [
 
 [[package]]
 name = "bumpalo"
-version = "3.6.1"
+version = "3.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "63396b8a4b9de3f4fdfb320ab6080762242f66a8ef174c49d8e19b674db4cdbe"
+checksum = "9c59e7af012c713f529e7a3ee57ce9b31ddd858d4b512923602f74608b009631"
 
 [[package]]
 name = "byte-slice-cast"
@@ -1059,13 +1060,13 @@ dependencies = [
  "slasher_service",
  "slog",
  "slog-async",
- "sloggers",
+ "sloggers 1.0.1",
  "slot_clock",
  "store",
  "task_executor",
  "time 0.2.26",
  "timer",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "toml",
  "tree_hash",
  "types",
@@ -1243,9 +1244,9 @@ dependencies = [
 
 [[package]]
 name = "crossbeam-epoch"
-version = "0.9.4"
+version = "0.9.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "52fb27eab85b17fbb9f6fd667089e07d6a2eb8743d02639ee7f6a7a7729c9c94"
+checksum = "4ec02e091aa634e2c3ada4a392989e7c3116673ef0ac5b72232439094d73b7fd"
 dependencies = [
  "cfg-if 1.0.0",
  "crossbeam-utils",
@@ -1256,11 +1257,10 @@ dependencies = [
 
 [[package]]
 name = "crossbeam-utils"
-version = "0.8.4"
+version = "0.8.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4feb231f0d4d6af81aed15928e58ecf5816aa62a2393e2c82f46973e92a9a278"
+checksum = "d82cfc11ce7f2c3faef78d8a684447b40d503d9681acebed6cb728d45940c4db"
 dependencies = [
- "autocfg 1.0.1",
  "cfg-if 1.0.0",
  "lazy_static",
 ]
@@ -1605,11 +1605,11 @@ checksum = "212d0f5754cb6769937f4501cc0e67f4f4483c8d2c3e1e922ee9edbe4ab4c7c0"
 
 [[package]]
 name = "discv5"
-version = "0.1.0-beta.4"
+version = "0.1.0-beta.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "64398d706a4be74770d79f8445dadace705bb91d47496bfe5c6324982ef9ad4a"
+checksum = "0f5a5132ff1173d356fd78d09cd33d82fe8f7e6b4016d8c891edf2680a8cebe6"
 dependencies = [
- "aes-ctr",
+ "aes",
  "aes-gcm",
  "arrayvec 0.7.0",
  "digest 0.9.0",
@@ -1627,7 +1627,7 @@ dependencies = [
  "rlp 0.5.0",
  "sha2 0.9.5",
  "smallvec",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-stream",
  "tokio-util 0.6.7",
  "tracing",
@@ -1810,9 +1810,9 @@ dependencies = [
  "slog-async",
  "slog-json",
  "slog-term",
- "sloggers",
+ "sloggers 1.0.1",
  "task_executor",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "types",
 ]
 
@@ -1849,10 +1849,10 @@ dependencies = [
  "serde",
  "serde_json",
  "slog",
- "sloggers",
+ "sloggers 1.0.1",
  "state_processing",
  "task_executor",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-compat-02",
  "toml",
  "tree_hash",
@@ -1867,7 +1867,7 @@ dependencies = [
  "deposit_contract",
  "futures 0.3.15",
  "serde_json",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-compat-02",
  "types",
  "web3",
@@ -2008,7 +2008,7 @@ dependencies = [
  "task_executor",
  "tempfile",
  "tiny-keccak 2.0.2",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-io-timeout",
  "tokio-util 0.6.7",
  "types",
@@ -2490,7 +2490,7 @@ dependencies = [
  "serde_derive",
  "slog",
  "state_processing",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-compat-02",
  "tree_hash",
  "types",
@@ -2520,9 +2520,9 @@ dependencies = [
 
 [[package]]
 name = "ghash"
-version = "0.4.1"
+version = "0.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5f6fb2a26dd2ebd268a68bc8e9acc9e67e487952f33384055a1cbe697514c64e"
+checksum = "7bbd60caa311237d508927dbba7594b483db3ef05faa55172fcf89b1bcda7853"
 dependencies = [
  "opaque-debug 0.3.0",
  "polyval",
@@ -2620,7 +2620,7 @@ dependencies = [
  "http",
  "indexmap",
  "slab",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-util 0.6.7",
  "tracing",
 ]
@@ -2654,7 +2654,7 @@ name = "hashset_delay"
 version = "0.2.0"
 dependencies = [
  "futures 0.3.15",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-util 0.6.7",
 ]
 
@@ -2685,9 +2685,9 @@ dependencies = [
 
 [[package]]
 name = "heck"
-version = "0.3.2"
+version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "87cbf45460356b7deeb5e3415b5563308c0a9b057c85e12b06ad551f98d0a6ac"
+checksum = "6d621efb26863f0e9924c6ac577e8275e5e6b77455db64ffa6c65c904e9e132c"
 dependencies = [
  "unicode-segmentation",
 ]
@@ -2842,7 +2842,7 @@ dependencies = [
  "slot_clock",
  "state_processing",
  "store",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-stream",
  "tokio-util 0.6.7",
  "tree_hash",
@@ -2869,7 +2869,7 @@ dependencies = [
  "slog",
  "slot_clock",
  "store",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "types",
  "warp",
  "warp_utils",
@@ -2917,7 +2917,7 @@ dependencies = [
  "serde",
  "serde_json",
  "serde_regex",
- "tokio 1.6.0",
+ "tokio 1.6.1",
 ]
 
 [[package]]
@@ -2968,7 +2968,7 @@ dependencies = [
  "itoa",
  "pin-project 1.0.7",
  "socket2 0.4.0",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tower-service",
  "tracing",
  "want",
@@ -3014,7 +3014,7 @@ dependencies = [
  "bytes 1.0.1",
  "hyper 0.14.8",
  "native-tls",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-native-tls",
 ]
 
@@ -3343,7 +3343,7 @@ dependencies = [
  "serde_yaml",
  "simple_logger",
  "state_processing",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tree_hash",
  "types",
  "validator_dir",
@@ -3617,7 +3617,7 @@ dependencies = [
  "libp2p-core",
  "log",
  "socket2 0.4.0",
- "tokio 1.6.0",
+ "tokio 1.6.1",
 ]
 
 [[package]]
@@ -3718,10 +3718,10 @@ dependencies = [
  "slog",
  "slog-async",
  "slog-term",
- "sloggers",
+ "sloggers 1.0.1",
  "task_executor",
  "tempfile",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "types",
  "validator_client",
  "validator_dir",
@@ -4046,7 +4046,7 @@ dependencies = [
  "slog",
  "store",
  "task_executor",
- "tokio 1.6.0",
+ "tokio 1.6.1",
 ]
 
 [[package]]
@@ -4174,7 +4174,7 @@ dependencies = [
  "slog",
  "slog-async",
  "slog-term",
- "sloggers",
+ "sloggers 1.0.1",
  "slot_clock",
  "smallvec",
  "state_processing",
@@ -4182,7 +4182,7 @@ dependencies = [
  "strum",
  "task_executor",
  "tempfile",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-stream",
  "tokio-util 0.6.7",
  "tree_hash",
@@ -4680,10 +4680,11 @@ dependencies = [
 
 [[package]]
 name = "polyval"
-version = "0.5.0"
+version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "864231b0b86ce05168a8e6da0fea2e67275dacf25f75b00a62cfd341aab904a9"
+checksum = "e597450cbf209787f0e6de80bf3795c6b2356a380ee87837b545aded8dbc1823"
 dependencies = [
+ "cfg-if 1.0.0",
  "cpufeatures",
  "opaque-debug 0.3.0",
  "universal-hash",
@@ -5145,11 +5146,10 @@ dependencies = [
 
 [[package]]
 name = "regex-automata"
-version = "0.1.9"
+version = "0.1.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ae1ded71d66a4a97f5e961fd0cb25a5f366a42a41570d16a763a69c092c26ae4"
+checksum = "6c230d73fb8d8c1b9c0b3135c5142a8acee3a0558fb8db5cf1cb65f8d7862132"
 dependencies = [
- "byteorder",
  "regex-syntax",
 ]
 
@@ -5185,7 +5185,7 @@ dependencies = [
  "regex",
  "remote_signer_test",
  "slog",
- "sloggers",
+ "sloggers 1.0.1",
  "tempfile",
  "types",
  "zeroize",
@@ -5218,7 +5218,7 @@ dependencies = [
  "reqwest",
  "sensitive_url",
  "serde",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "types",
 ]
 
@@ -5237,7 +5237,7 @@ dependencies = [
  "serde",
  "serde_json",
  "tempfile",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "types",
  "winapi 0.3.9",
  "windows-acl",
@@ -5278,7 +5278,7 @@ dependencies = [
  "serde",
  "serde_json",
  "serde_urlencoded",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-native-tls",
  "url",
  "wasm-bindgen",
@@ -5772,9 +5772,9 @@ dependencies = [
 
 [[package]]
 name = "signal-hook"
-version = "0.3.8"
+version = "0.3.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ef33d6d0cd06e0840fba9985aab098c147e67e05cee14d412d3345ed14ff30ac"
+checksum = "470c5a6397076fae0094aaf06a08e6ba6f37acb77d3b1b91ea92b4d6c8650c39"
 dependencies = [
  "libc",
  "signal-hook-registry",
@@ -5782,9 +5782,9 @@ dependencies = [
 
 [[package]]
 name = "signal-hook-registry"
-version = "1.3.0"
+version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "16f1d0fef1604ba8f7a073c7e701f213e056707210e9020af4528e0101ce11a6"
+checksum = "e51e73328dc4ac0c7ccbda3a494dfa03df1de2f46018127f60c693f2648455b0"
 dependencies = [
  "libc",
 ]
@@ -5825,7 +5825,7 @@ dependencies = [
  "parking_lot",
  "rayon",
  "sensitive_url",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "types",
  "validator_client",
 ]
@@ -5864,7 +5864,7 @@ dependencies = [
  "serde",
  "serde_derive",
  "slog",
- "sloggers",
+ "sloggers 2.0.0",
  "tempfile",
  "tree_hash",
  "tree_hash_derive",
@@ -5884,7 +5884,7 @@ dependencies = [
  "slot_clock",
  "state_processing",
  "task_executor",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-stream",
  "types",
 ]
@@ -5991,6 +5991,27 @@ checksum = "f01d37507aa6f37490cfa08d71e2639b16906e84c285ae4b9f7ec7ca35756d69"
 dependencies = [
  "chrono",
  "libflate",
+ "regex",
+ "serde",
+ "slog",
+ "slog-async",
+ "slog-kvfilter",
+ "slog-scope",
+ "slog-stdlog",
+ "slog-term",
+ "trackable",
+]
+
+[[package]]
+name = "sloggers"
+version = "2.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "92ee08a52260ed355f96069884bf8873f2439231f8754cbd545291d647ebbd75"
+dependencies = [
+ "chrono",
+ "libc",
+ "libflate",
+ "once_cell",
  "regex",
  "serde",
  "slog",
@@ -6224,7 +6245,7 @@ dependencies = [
  "serde",
  "serde_derive",
  "slog",
- "sloggers",
+ "sloggers 1.0.1",
  "state_processing",
  "tempfile",
  "tree_hash",
@@ -6341,7 +6362,7 @@ dependencies = [
  "lazy_static",
  "lighthouse_metrics",
  "slog",
- "tokio 1.6.0",
+ "tokio 1.6.1",
 ]
 
 [[package]]
@@ -6502,7 +6523,7 @@ dependencies = [
  "slog",
  "slot_clock",
  "task_executor",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "types",
 ]
 
@@ -6604,9 +6625,9 @@ dependencies = [
 
 [[package]]
 name = "tokio"
-version = "1.6.0"
+version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bd3076b5c8cc18138b8f8814895c11eb4de37114a5d127bafdc5e55798ceef37"
+checksum = "0a38d31d7831c6ed7aad00aa4c12d9375fd225a6dd77da1d25b707346319a975"
 dependencies = [
  "autocfg 1.0.1",
  "bytes 1.0.1",
@@ -6642,7 +6663,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "90c49f106be240de154571dd31fbe48acb10ba6c6dd6f6517ad603abffa42de9"
 dependencies = [
  "pin-project-lite 0.2.6",
- "tokio 1.6.0",
+ "tokio 1.6.1",
 ]
 
 [[package]]
@@ -6674,7 +6695,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f7d995660bd2b7f8c1568414c1126076c13fbb725c40112dc0120b78eb9b717b"
 dependencies = [
  "native-tls",
- "tokio 1.6.0",
+ "tokio 1.6.1",
 ]
 
 [[package]]
@@ -6685,7 +6706,7 @@ checksum = "f8864d706fdb3cc0843a49647ac892720dac98a6eeb818b77190592cf4994066"
 dependencies = [
  "futures-core",
  "pin-project-lite 0.2.6",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-util 0.6.7",
 ]
 
@@ -6708,7 +6729,7 @@ dependencies = [
  "futures-util",
  "log",
  "pin-project 1.0.7",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tungstenite",
 ]
 
@@ -6754,7 +6775,7 @@ dependencies = [
  "log",
  "pin-project-lite 0.2.6",
  "slab",
- "tokio 1.6.0",
+ "tokio 1.6.1",
 ]
 
 [[package]]
@@ -6920,7 +6941,7 @@ dependencies = [
  "smallvec",
  "thiserror",
  "tinyvec",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "url",
 ]
 
@@ -6940,7 +6961,7 @@ dependencies = [
  "resolv-conf",
  "smallvec",
  "thiserror",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "trust-dns-proto",
 ]
 
@@ -7095,9 +7116,9 @@ dependencies = [
 
 [[package]]
 name = "unicode-normalization"
-version = "0.1.17"
+version = "0.1.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "07fbfce1c8a97d547e8b5334978438d9d6ec8c20e38f56d4a4374d181493eaef"
+checksum = "d54590932941a9e9266f0832deed84ebe1bf2e4c9e4a3554d393d18f5e854bf9"
 dependencies = [
  "tinyvec",
 ]
@@ -7241,7 +7262,7 @@ dependencies = [
  "slog-term",
  "slot_clock",
  "tempfile",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tree_hash",
  "types",
  "validator_dir",
@@ -7349,7 +7370,7 @@ dependencies = [
  "serde",
  "serde_json",
  "serde_urlencoded",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "tokio-stream",
  "tokio-tungstenite",
  "tokio-util 0.6.7",
@@ -7370,7 +7391,7 @@ dependencies = [
  "safe_arith",
  "serde",
  "state_processing",
- "tokio 1.6.0",
+ "tokio 1.6.1",
  "types",
  "warp",
 ]
