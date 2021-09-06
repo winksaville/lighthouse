@@ -143,17 +143,17 @@ mod post {
 
         let run_testcase = |u: &str| -> Result<String, String> {
             let url = SensitiveUrl::parse(u).unwrap();
-
+            println!("url={:?}", url);
             let reqwest_client = ClientBuilder::new()
                 .timeout(Duration::from_secs(12))
-                .build()
-                .unwrap();
-
+                .build();
+            println!("reqwest_client={:?}", reqwest_client);
+            let reqwest_client = reqwest_client.unwrap();
+            println!("realbigsean never gets here wink's does; reqwest_client={:?}", reqwest_client);
             let test_client = RemoteSignerHttpConsumer::from_components(url, reqwest_client);
-
             let test_input = get_input_data_block(0xc137);
             let signature = do_sign_request(&test_client, test_input);
-
+            println!("signature={:?}", signature);
             signature.map_err(|e| format!("{:?}", e))
         };
 

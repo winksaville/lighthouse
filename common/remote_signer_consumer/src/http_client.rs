@@ -74,7 +74,7 @@ impl RemoteSignerHttpConsumer {
             .send()
             .await
             .map_err(Error::Reqwest)?;
-
+        println!("response={:?}", response);
         match response.status() {
             StatusCode::OK => match response.json::<RemoteSignerResponseBodyOK>().await {
                 Ok(resp_json) => Ok(resp_json.signature),
