@@ -21,6 +21,23 @@ pub fn null_logger() -> Logger {
     log_builder.build().expect("should build logger")
 }
 
+/// Return a logger suitable for test usage.
+///
+/// By default no logs will be printed, but they can be enabled via the `test_logger` feature.
+///
+/// We've tried the `slog_term::TestStdoutWriter` in the past, but found it too buggy because
+/// of the threading limitation.
+pub fn test_logger() -> Logger {
+    if cfg!(feature = "test_logger") {
+        sloggers::terminal::TerminalLoggerBuilder::new()
+            .level(sloggers::types::Severity::Debug)
+            .build()
+            .unwrap()
+    } else {
+        sloggers::null::NullLoggerBuilder.build().unwrap()
+    }
+}
+
 pub fn new_env() -> Environment<MinimalEthSpec> {
     EnvironmentBuilder::minimal()
         .multi_threaded_tokio_runtime()
@@ -838,8 +855,10 @@ mod fallbacks {
 
     #[tokio::test]
     async fn test_fallback_when_offline() {
+        println!("starting");
+
         async {
-            let log = null_logger();
+            let log = test_logger(); //null_logger();
             let endpoint2 = new_ganache_instance()
                 .await
                 .expect("should start eth1 environment");
@@ -862,6 +881,8 @@ mod fallbacks {
                 .ganache
                 .fork()
                 .expect("should start eth1 environment");
+            println!("endpoint1={:?}", endpoint1.endpoint());
+            println!("endpoint2={:?}", endpoint2.endpoint());
 
             //mine additional blocks on top of the original endpoint
             for _ in 0..new_blocks {
@@ -886,27 +907,38 @@ mod fallbacks {
                 log.clone(),
                 MainnetEthSpec::default_spec(),
             );
+            println!("stopping point");
 
             let endpoint1_block_number = get_block_number(&endpoint1.web3).await;
             //the first call will only query endpoint1
             service.update().await.expect("should update deposit cache");
+            let last_block = service.deposits().read().last_processed_block.unwrap();
+            println!("last_block={} endpoint1_block_number={}", last_block, endpoint1_block_number);
             assert_eq!(
-                service.deposits().read().last_processed_block.unwrap(),
+                //service.deposits().read().last_processed_block.unwrap(),
+                last_block,
                 endpoint1_block_number
             );
 
             drop(endpoint1);
+            println!("dropped endpoint1");
 
             let endpoint2_block_number = get_block_number(&endpoint2.web3()).await;
             assert!(endpoint1_block_number < endpoint2_block_number);
             //endpoint1 is offline => query will import blocks from endpoint2
             service.update().await.expect("should update deposit cache");
+            let last_block = service.deposits().read().last_processed_block.unwrap();
+            println!("last_block={} endpoint2_block_number={}", last_block, endpoint2_block_number);
+
             assert_eq!(
-                service.deposits().read().last_processed_block.unwrap(),
+                //service.deposits().read().last_processed_block.unwrap(),
+                last_block,
                 endpoint2_block_number
             );
         }
         .await;
+
+        println!("finished");
     }
 
     #[tokio::test]
