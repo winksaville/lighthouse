@@ -731,7 +731,11 @@ impl Service {
             })?;
 
         if num_errors > 0 {
-            info!(self.log, "Fetched data from fallback"; "fallback_number" => num_errors);
+            info!(self.log,
+                "Fetched data from fallback";
+                "fallback_index" => num_errors,
+                "fallback_ep" => &endpoints.fallback.servers[num_errors].endpoint.as_ref()
+             );
         }
 
         *self.inner.remote_head_block.write() = Some(remote_head_block);
