@@ -11,11 +11,14 @@
 
 set -o nounset -o errexit -o pipefail
 
+eth1_port=${1:-8545}
+echo eth1_port=$eth1_port
+
 source ./vars.env
 
 lcli \
 	deploy-deposit-contract \
-	--eth1-http http://localhost:8545 \
+	--eth1-http http://localhost:$eth1_port \
 	--confirmations 1 \
 	--validator-count $VALIDATOR_COUNT
 

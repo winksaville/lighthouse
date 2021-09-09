@@ -22,4 +22,5 @@ exec lighthouse \
 	--port $2 \
 	--http-port $3 \
 	--disable-packet-filter \
+	--subscribe-all-subnets \
 	--target-peers $((NODE_COUNT - 1))
