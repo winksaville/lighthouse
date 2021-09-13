@@ -5,17 +5,26 @@
 # Starts a bootnode from the generated enr.
 #
 
+echo "WIP"
+exit
+
 source ./vars.env
+
+# Optional BOOTNODE_PORT, each
+BOOTNODE_PORT==${1:-$BOOTNODE_PORT}
+echo BOOTNODE_PORT=$BOOTNODE_PORT
+
+OUTPUT_DIR=$DATADIR/bootnode_$BOOTNODE_PORT
 
 echo "Generating bootnode enr"
 
 lcli \
-	generate-bootnode-enr \
-	--ip 127.0.0.1 \
-	--udp-port $BOOTNODE_PORT \
-	--tcp-port $BOOTNODE_PORT \
-	--genesis-fork-version $GENESIS_FORK_VERSION \
-	--output-dir $DATADIR/bootnode
+    generate-bootnode-enr \
+    --ip 127.0.0.1 \
+    --udp-port $BOOTNODE_PORT \
+    --tcp-port $BOOTNODE_PORT \
+    --genesis-fork-version $GENESIS_FORK_VERSION \
+    --output-dir $OUTPUT_DIR
 
 bootnode_enr=`cat $DATADIR/bootnode/enr.dat`
 echo "- $bootnode_enr" > $TESTNET_DIR/boot_enr.yaml
@@ -30,5 +39,5 @@ exec lighthouse boot_node \
     --testnet-dir $TESTNET_DIR \
     --port $BOOTNODE_PORT \
     --listen-address 127.0.0.1 \
-	--disable-packet-filter \
-    --network-dir $DATADIR/bootnode \
+    --disable-packet-filter \
+    --network-dir $DATADIR/bootnode
